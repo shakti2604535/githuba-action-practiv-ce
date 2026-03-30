@@ -15,4 +15,8 @@ jobs:
          run: echo "${{github.ref_name}}"
        - name: print date time
          run: date "+%Y-%m-%d %H:%M:%S"
+       - name: list the files
+         run: ls -la
+       - name: runner os
+         run: uname -a
 
