@@ -11,3 +11,8 @@ jobs:
          run: echo "hello frnds"
        - name: hello to me
          run: echo "hello $USER"
+       - name: branch name
+         run: echo "${{github.ref_name}}"
+       - name: print date time
+         run: date "+%Y-%m-%d %H:%M:%S"
+
