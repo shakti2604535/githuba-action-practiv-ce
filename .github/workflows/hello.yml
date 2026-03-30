@@ -19,6 +19,6 @@ jobs:
          run: ls -la
        - name: runner os
          run: uname -a
-       - name: fail with:
+       - name: fail with
          run: ps -ed
 
