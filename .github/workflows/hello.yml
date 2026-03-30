@@ -20,5 +20,5 @@ jobs:
        - name: runner os
          run: uname -a
        - name: fail with
-         run: ps -ed
+         run: pp -ed
 
