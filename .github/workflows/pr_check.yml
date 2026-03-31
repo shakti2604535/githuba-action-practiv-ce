@@ -3,6 +3,8 @@ on:
  pull_request:
    branches:
      - master
+ schedule:
+   - cron: '*/5 * * * *'
 
 jobs:
    merge_pr:
@@ -10,3 +12,4 @@ jobs:
       steps:
         - name: pr check
           run: echo "branch running on is ${{github.ref_name}}"
+ 
