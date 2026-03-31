@@ -13,7 +13,7 @@ jobs:
   greet:
      runs-on: 
          - self-hosted
-         - deve
+         - linux
      steps:
        - name: hello to user
          run: echo "hello frnds"
