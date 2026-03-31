@@ -1,8 +1,14 @@
 name: hello
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      environments:
+         description: "deploy env"
+         default: 'staging'
+         type: choice
+         options:
+              - staging
+              - dev
 jobs:
   greet:
      runs-on: ubuntu-latest
