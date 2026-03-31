@@ -25,6 +25,6 @@ jobs:
          run: ls -la
        - name: runner os
          run: uname -a
-       - name: fail with
-         run: pp -ed
+       - name: input get with
+         run: echo "${{inputs.environments}}"
 
