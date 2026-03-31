@@ -1,1 +1,12 @@
+name: pr check
+on: 
+ pull_request:
+   branches:
+     - master
 
+jobs:
+   merge_pr:
+      runs-on: ubuntu-latest
+      steps:
+        - name: pr check
+          run: echo "branch running on is ${{github.ref_name}}"
