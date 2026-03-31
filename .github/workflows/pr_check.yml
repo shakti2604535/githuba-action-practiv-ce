@@ -11,5 +11,4 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: pr check
-          run: echo "branch running on is ${{github.ref_name}}"
- 
+          run: echo "branch running on is ${{github.head_ref}}"
