@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       environments:
-         description: "deploy enrv"
+         description: "deploy enr4v"
          default: 'staging'
          type: choice
          options:
