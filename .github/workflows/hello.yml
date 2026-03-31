@@ -11,7 +11,7 @@ on:
               - dev
 jobs:
   greet:
-     runs-on: [self-hosted, deve]
+     runs-on: self-hosted
      steps:
        - name: hello to user
          run: echo "hello frnds"
