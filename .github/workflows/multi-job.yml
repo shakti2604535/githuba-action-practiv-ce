@@ -1,16 +1,19 @@
 name: multi-jobs
+
 on:
- push:
-   branches:
+  push:
+    branches:
       - main
+
 env:
- app_name: demo-app
+  APP_NAME: demo-app   # fixed casing
 
 jobs:
   build:
-  env: 
-    ENVIRONMENT: staging
     runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: staging
+
     steps:
       - name: Build step
         env:
@@ -21,8 +24,8 @@ jobs:
           echo "Version: $VERSION"
           echo "Commit SHA: ${{ github.sha }}"
           echo "Triggered by: ${{ github.actor }}"
-          echo "var : ${{vars.APP_DATA}}
-          echo "secret ${{secrets.APP_PASS}}
+          echo "var : ${{ vars.APP_DATA }}"
+          echo "secret: ${{ secrets.APP_PASS }}"
 
   test:
     runs-on: ubuntu-latest
