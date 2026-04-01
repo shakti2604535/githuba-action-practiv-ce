@@ -1,6 +1,14 @@
 name: matric_pr
-on: {}
-
+on:
+    workflow_dispatch:
+    inputs:
+      environments:
+         description: "deploy enr4v"
+         default: 'staging'
+         type: choice
+         options:
+              - staging
+              - dev
 jobs:
   matrix:
     runs-on: ${{matrix.os}}
