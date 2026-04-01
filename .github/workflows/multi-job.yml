@@ -19,6 +19,7 @@ jobs:
 
     steps:
       - name: Build step
+        if: github.ref_name == 'main'
         id: output1
         env:
           VERSION: 1.0.0
@@ -31,8 +32,14 @@ jobs:
           echo "var : ${{ vars.APP_DATA }}"
           echo "secret: ${{ secrets.APP_PASS }}"
           echo "today=$(date '+%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: failed
+        run: exit 1
+      - name: check prev
+        if: failure()
+        echo: "failed state before"
 
   test:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -45,3 +52,10 @@ jobs:
     steps:
       - name: Deploy step
         run: echo "Deploying"
+      - name: This step may fail
+        continue-on-error: true
+        run: exit 1
+
+      - name: Next step still runs
+        run: echo "Workflow continues even if previous step failed"
+
