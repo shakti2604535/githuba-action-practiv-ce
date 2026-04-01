@@ -3,13 +3,26 @@ on:
  push:
    branches:
       - main
+env:
+ app_name: demo-app
 
 jobs:
   build:
+  env: 
+    ENVIRONMENT: staging
     runs-on: ubuntu-latest
     steps:
       - name: Build step
-        run: echo "Building the app"
+        env:
+          VERSION: 1.0.0
+        run: |
+          echo "App Name: $APP_NAME"
+          echo "Environment: $ENVIRONMENT"
+          echo "Version: $VERSION"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "var : ${{vars.app_name}}
+          echo "secret ${{secrets.app_pass}}
 
   test:
     runs-on: ubuntu-latest
