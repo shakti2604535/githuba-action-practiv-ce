@@ -67,5 +67,5 @@ jobs:
           fi
 
       - name: Print commit message
-        run: echo "Commit message : no vh ${{ github.event.head_commit.message }}"
+        run: echo 'Commit message : no vh ${{ github.event.head_commit.message }}'
 
