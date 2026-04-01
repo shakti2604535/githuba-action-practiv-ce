@@ -1,6 +1,6 @@
 name: pr check
 on: 
-   workflow_dispatch:
+ workflow_dispatch:
     inputs:
       environments:
          description: "deploy enr4v"
@@ -9,7 +9,7 @@ on:
          options:
               - staging
               - dev
-schedule:
+ schedule:
    - cron: '*/5 * * * *'
 
 jobs:
