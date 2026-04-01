@@ -14,9 +14,12 @@ jobs:
     environment: multi
     env:
       ENVIRONMENT: staging
+    outputs:
+      date: ${{steps.output1.outputs.today}}
 
     steps:
       - name: Build step
+        id: output1
         env:
           VERSION: 1.0.0
         run: |
@@ -27,13 +30,14 @@ jobs:
           echo "Triggered by: ${{ github.actor }}"
           echo "var : ${{ vars.APP_DATA }}"
           echo "secret: ${{ secrets.APP_PASS }}"
+          echo "today=$(date '+%Y-%m-%d')" >> $GITHUB_OUTPUT
 
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Test step
-        run: echo "Running tests"
+        run: echo "Running tests ${{ needs.build.outputs.date}}"
 
   deploy:
     runs-on: ubuntu-latest
