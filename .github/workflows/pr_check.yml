@@ -9,7 +9,7 @@ on:
          options:
               - staging
               - dev
- schedule:
+schedule:
    - cron: '*/5 * * * *'
 
 jobs:
