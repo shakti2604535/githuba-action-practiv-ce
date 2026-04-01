@@ -21,8 +21,8 @@ jobs:
           echo "Version: $VERSION"
           echo "Commit SHA: ${{ github.sha }}"
           echo "Triggered by: ${{ github.actor }}"
-          echo "var : ${{vars.app_name}}
-          echo "secret ${{secrets.app_pass}}
+          echo "var : ${{vars.APP_DATA}}
+          echo "secret ${{secrets.APP_PASS}}
 
   test:
     runs-on: ubuntu-latest
