@@ -36,7 +36,7 @@ jobs:
         run: exit 1
       - name: check prev
         if: failure()
-        echo: "failed state before"
+        run: echo "failed state before"
 
   test:
     if: github.event_name == 'pull_request'
