@@ -33,6 +33,7 @@ jobs:
           echo "secret: ${{ secrets.APP_PASS }}"
           echo "today=$(date '+%Y-%m-%d')" >> $GITHUB_OUTPUT
       - name: failed
+        continue-on-error: true
         run: exit 1
       - name: check prev
         if: failure()
