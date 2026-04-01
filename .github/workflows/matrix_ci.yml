@@ -1,7 +1,7 @@
 name: matric_pr
 on:
-    workflow_dispatch:
-    inputs:
+   workflow_dispatch:
+     inputs:
       environments:
          description: "deploy enr4v"
          default: 'staging'
