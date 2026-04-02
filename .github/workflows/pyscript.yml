@@ -26,4 +26,4 @@ jobs:
           pip install -r requirements.txt || true
           # (safe even if no requirements.txt)
       - name: eun script
-        run: python script.py
+        run: python script.py 
