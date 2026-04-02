@@ -59,8 +59,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Test step
-        run: cat report.txt
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: shared-file
+
+      - name: Print file contents
+        run: |
+          echo "Contents of downloaded file:"
+          cat output.txt
       
 
   deploy:
