@@ -1,0 +1,21 @@
+name: pyscript
+
+on:
+ push:
+   branches:
+        - main
+
+jobs:
+  pyrun:
+    runs-on: ubuntu:latest
+    steps:
+      - name: checkout ocde
+        uses: actions/checkout@v4
+      - name: setup pyrun
+        uses: actions/setup-python@v4
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt || true
+          # (safe even if no requirements.txt)
+      - name: eun script
+        run: python script.py
