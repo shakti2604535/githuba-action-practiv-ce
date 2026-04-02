@@ -7,7 +7,7 @@ on:
 
 jobs:
   pyrun:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout ocde
         uses: actions/checkout@v4
