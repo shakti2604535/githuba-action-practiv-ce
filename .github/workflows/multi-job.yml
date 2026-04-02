@@ -42,6 +42,17 @@ jobs:
       - name: check prev
         if: failure()
         run: echo "failed state before"
+      - name: create file 
+        run: |
+          echo "file data">report.txt
+          echo "DATE : ${date}">>report.txt
+          echo "success">>report.txt
+          cat report.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-test
+          path: report.txt
 
   test:
     if: github.event_name == 'push'
