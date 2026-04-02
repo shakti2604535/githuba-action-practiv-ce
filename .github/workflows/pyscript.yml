@@ -13,6 +13,14 @@ jobs:
         uses: actions/checkout@v4
       - name: setup pyrun
         uses: actions/setup-python@v4
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            pip-${{ runner.os }}-
       - name: Install dependencies
         run: |
           pip install -r requirements.txt || true
