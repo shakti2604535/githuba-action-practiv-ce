@@ -9,8 +9,8 @@ on:
          options:
               - staging
               - dev
- schedule:
-   - cron: '*/5 * * * *'
+ # schedule:
+ #   - cron: '*/5 * * * *'
 
 jobs:
    merge_pr:
