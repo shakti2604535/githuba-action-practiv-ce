@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    environment: multi
     uses: ./.github/workflows/reuseable.yml
     with:
       app_name: "my-web-app"
