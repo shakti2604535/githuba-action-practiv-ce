@@ -2,7 +2,7 @@ name: reusable
 on:
   workflow_call:
       inputs:
-        appz_name:
+        app_name:
             description: "python"
             required: true
             type: string
