@@ -20,7 +20,6 @@ on:
 jobs:
   reused:
      runs-on: ubuntu-latest
-     environment: multi
      steps:
       - name: Checkout code
         uses: actions/checkout@v4
