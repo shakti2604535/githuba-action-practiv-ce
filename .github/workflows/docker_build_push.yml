@@ -18,10 +18,10 @@ jobs:
           run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
         - name: docker build
           run: |
-             docker build -t ${{ secrets.DOCKER_USERNAME }}/github-action-practice:latest .
+             docker build -t ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:latest .
              docker build -t ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:sha-${SHA_SHORT} .
         - name: login to dockerhub
-          if: github.refs == 'refs/heads/main'
+          if: github.ref == 'refs/heads/main'
           run: |
              echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
