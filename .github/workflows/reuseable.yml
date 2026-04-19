@@ -1,0 +1,39 @@
+name: reusable
+on:
+  workflow_call:
+      inputs:
+        appz_name:
+            description: "python"
+            required: true
+            type: string
+        environment:
+            description: "Deployment environment"
+            required: true
+            default: staging
+            type: string
+      secrets:
+        docker_token:
+            required: true
+        
+
+
+jobs:
+  reused:
+     runs-on: ubuntu-latest
+     environment: multi
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print build info
+        run: |
+          echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
+
+      - name: Check Docker token
+        run: |
+          if [ -n "${{ secrets.docker_token }}" ]; then
+            echo "Docker token is set: true"
+          else
+            echo "Docker token is NOT set"
+          fi
+  
