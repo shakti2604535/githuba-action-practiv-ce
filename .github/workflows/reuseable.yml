@@ -17,7 +17,7 @@ on:
       outputs:   # 👈 expose output to caller
         build_version:
             description: "Generated build version"
-            value: ${{ jobs.build.outputs.build_version }}
+            value: ${{ jobs.reused.outputs.build_version }}
         
 
 
