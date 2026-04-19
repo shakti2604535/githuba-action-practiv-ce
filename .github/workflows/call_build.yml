@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     environment: multi
-    uses: ./.github/workflows/reuseable.yml
+    uses: ./reuseable.yml
     with:
       app_name: "my-web-app"
       environment: "production"
