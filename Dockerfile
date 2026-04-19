@@ -4,7 +4,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy your script into the container
-COPY main.py .
+COPY script.py .
 
 # Run the script
-CMD ["python", "main.py"]
+CMD ["python", "script.py"]

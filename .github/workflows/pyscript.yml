@@ -1,9 +1,7 @@
 name: pyscript
 
 on:
- push:
-   branches:
-        - main
+  workflow_dispatch:
 
 jobs:
   pyrun:
