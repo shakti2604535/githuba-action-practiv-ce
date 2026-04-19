@@ -1,1 +1,1 @@
-# githuba-action-practiv-ce
+# githuba-action-practice
