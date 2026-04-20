@@ -1,10 +1,24 @@
-FROM python:3.11-slim
+# FROM python:3.11-slim
 
-# Set the working directory
+# # Set the working directory
+# WORKDIR /app
+
+# # Copy your script into the container
+# COPY script.py .
+
+# # Run the script
+# CMD ["python", "script.py"]
+
+
+FROM python:3.10-slim
+
 WORKDIR /app
 
-# Copy your script into the container
-COPY script.py .
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Run the script
-CMD ["python", "script.py"]
+COPY . .
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
