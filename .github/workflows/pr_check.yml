@@ -16,5 +16,5 @@ jobs:
    merge_pr:
       runs-on: ubuntu-latest
       steps:
-        - name: pr check
+        - name: pr chyteck
           run: echo "branch running on is ${{github.head_ref}}"
