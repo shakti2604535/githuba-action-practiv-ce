@@ -27,6 +27,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    environment: multi
 
     outputs:
       image_url: ${{ steps.set_output.outputs.image_url }}
