@@ -7,7 +7,6 @@ on:
 
 jobs:
   # ✅ Job 1: Build & Test
-  environment: multi
   build-test:
     uses: ./.github/workflows/reusable-build.yml
     with:
@@ -16,6 +15,7 @@ jobs:
 
   # ✅ Job 2: Docker Build & Push
   docker:
+    environment: multi
     needs: build-test
     uses: ./.github/workflows/reusable-docker.yml
     with:
