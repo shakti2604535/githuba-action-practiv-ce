@@ -1,0 +1,73 @@
+name: Reusable Build & Test
+
+on:
+  workflow_call:
+    inputs:
+      python_version:
+        description: "Python version to use"
+        required: false
+        default: "3.10"
+        type: string
+
+      run_tests:
+        description: "Whether to run tests"
+        required: false
+        default: true
+        type: boolean
+
+    outputs:
+      test_result:
+        description: "Result of test execution"
+        value: ${{ jobs.build-test.outputs.test_result }}
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    outputs:
+      test_result: ${{ steps.set_result.outputs.test_result }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found"
+          fi
+
+      # 👇 Run tests but don't fail job immediately
+      - name: Run tests
+        id: run_tests
+        if: inputs.run_tests == true
+        continue-on-error: true
+        run: |
+          echo "Running tests..."
+          if [ -f test.sh ]; then
+            chmod +x test.sh
+            ./test.sh
+          else
+            echo "No test script found"
+            exit 1
+          fi
+
+      # 👇 Set output based on test result
+      - name: Set test result output
+        id: set_result
+        run: |
+          if [ "${{ inputs.run_tests }}" != "true" ]; then
+            echo "test_result=skipped" >> $GITHUB_OUTPUT
+          elif [ "${{ steps.run_tests.outcome }}" == "success" ]; then
+            echo "test_result=passed" >> $GITHUB_OUTPUT
+          else
+            echo "test_result=failed" >> $GITHUB_OUTPUT
+            exit 1
+          fi
